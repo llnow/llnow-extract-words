@@ -6,8 +6,8 @@ def extract_texts(tweets):
     remove_words = ['lovelive', 'LoveLive', 'ラブライブ', 'Aqours', 'aqours', 'サンシャイン', '沼津', 'sunshine', '虹ヶ咲',
                     '虹ヶ咲学園スクールアイドル同好会', '同好会', 'Liella', 'スーパースター', 'ラブライバー', 'スクールアイドル', 'LoveLivestaff', 'スクフェス',
                     'スクスタ']
-    for status in tweets:
-        text = status['text']
+    for tweet in tweets:
+        text = tweet['text']
         if text.startswith('RT '):
             continue
         # URLの除去
