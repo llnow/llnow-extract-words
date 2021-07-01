@@ -1,7 +1,7 @@
 from janome.tokenizer import Tokenizer
 
 
-def extract_trend_words(texts):
+def tokenize(texts):
     t = Tokenizer()
     words = []
     for text in texts:
