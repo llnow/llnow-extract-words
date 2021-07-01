@@ -7,6 +7,7 @@ def extract_texts(event):
     s3 = boto3.resource('s3')
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = event['Records'][0]['s3']['object']['key']
+
     # s3からツイートを取得
     bucket = s3.Bucket(bucket)
     obj = bucket.Object(key)
