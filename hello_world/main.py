@@ -4,6 +4,9 @@ from put_words import *
 
 
 def main(event, context):
-    texts = extract_texts(event)
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = event['Records'][0]['s3']['object']['key']
+
+    texts = extract_texts(bucket, key)
     words = tokenize(texts)
-    put_words(words)
+    put_words(words, bucket)
