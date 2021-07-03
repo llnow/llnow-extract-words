@@ -1,18 +1,7 @@
-import boto3
-import json
 import re
 
 
-def extract_texts(bucket, key):
-    s3 = boto3.resource('s3')
-
-    # s3からツイートを取得
-    bucket = s3.Bucket(bucket)
-    obj = bucket.Object(key)
-    response = obj.get()
-    body = response['Body'].read()
-    tweets = json.loads(body.decode('utf-8'))
-
+def extract_texts(tweets):
     texts = []
     remove_words = ['lovelive', 'LoveLive', 'ラブライブ', 'Aqours', 'aqours', 'サンシャイン', '沼津', 'sunshine', '虹ヶ咲',
                     '虹ヶ咲学園スクールアイドル同好会', '同好会', 'Liella', 'スーパースター', 'ラブライバー', 'スクールアイドル', 'LoveLivestaff', 'スクフェス',
