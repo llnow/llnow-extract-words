@@ -1,7 +1,7 @@
 from janome.tokenizer import Tokenizer
 
 
-def texts2words(texts):
+def split_texts_into_words(texts):
     t = Tokenizer()
     words = []
     for text in texts:
