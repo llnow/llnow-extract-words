@@ -8,8 +8,9 @@ def extract_texts(tweets):
                     'スクスタ']
     for tweet in tweets:
         text = tweet['text']
-        if text.startswith('RT '):
-            continue
+        # 'RT 'で始まるツイートを除外
+        # if text.startswith('RT '):
+        #     continue
         # URLの除去
         text = re.sub(r'https?://[\w/:%#\$&\?\(\)~\.=\+\-…]+', '', text)
         # 改行の除去
