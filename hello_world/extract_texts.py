@@ -3,10 +3,12 @@ import boto3
 
 
 def extract_texts(tweets):
-    # ラブライブ！シリーズの基本的な単語をDynamoDBから取得
-    table = boto3.resource('dynamodb').Table('lovelive_words')
-    tables = table.scan()
-    remove_words_pattern = '|'.join(tables['Items'][0]['words'])
+    # 除去する単語をDynamoDBから取得
+    table = boto3.resource('dynamodb').Table('ll_now')
+    primary_key = {"primary": 'remove_word'}
+    res = table.get_item(Key=primary_key)
+    remove_words = res['Item']['word']
+    remove_words_pattern = '|'.join(remove_words)
 
     texts = []
     for tweet in tweets:
@@ -20,8 +22,8 @@ def extract_texts(tweets):
         # text=re.sub('\n', ' ', text)
         # 絵文字などを除去
         text = re.sub(r'[^、。!?ー〜1-9a-zA-Zぁ-んァ-ヶ亜-腕纊-黑一-鿕]', ' ', text)
-        # ラブライブ！シリーズの基本的な単語を除去
-        text = re.sub(remove_words_pattern, ' ', text)
+        # 不要な単語を除去
+        text = re.sub(remove_words_pattern, '', text)
 
         texts.append(text)
 
