@@ -12,5 +12,5 @@ def main(event, context):
     tweets = fetch_tweets(bucket, key)
     extract_tweets_features(tweets)
     texts = extract_texts(tweets)
-    words = split_texts_into_words(texts)
+    words = split_texts_into_words(texts, bucket)
     put_words(words, bucket)
