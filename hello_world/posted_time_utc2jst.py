@@ -12,6 +12,6 @@ def posted_time_utc2jst(posted_time_utc):
     # 日本時間に変換
     jst_time = utc_time.astimezone(pytz.timezone("Asia/Tokyo"))
     # フォーマットを変換
-    jst_time_str = jst_time.strftime("%Y-%m-%d_%H%M%S")
+    jst_time_str = jst_time.strftime("%Y/%m/%d %H:%M:%S")
 
     return jst_time_str
