@@ -13,9 +13,6 @@ def extract_texts(tweets):
     texts = []
     for tweet in tweets:
         text = tweet['text']
-        # 'RT 'で始まるツイートを除外
-        # if text.startswith('RT '):
-        #     continue
         # URLを除去
         text = re.sub(r'https?://[\w/:%#\$&\?\(\)~\.=\+\-…]+', ' ', text)
         # 改行を除去
