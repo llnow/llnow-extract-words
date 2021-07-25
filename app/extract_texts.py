@@ -14,9 +14,11 @@ def extract_texts(tweets):
     for tweet in tweets:
         text = tweet['text']
         hashtags = ['#' + ht['text'] for ht in tweet['entities']['hashtags']]
-        hashtags_pattern = '|'.join(hashtags)
+
         # ハッシュタグを除去
-        text = re.sub(hashtags_pattern, ' ', text)
+        if hashtags:
+            hashtags_pattern = '|'.join(hashtags)
+            text = re.sub(hashtags_pattern, ' ', text)
         # URLを除去
         text = re.sub(r'https?://[\w/:%#\$&\?\(\)~\.=\+\-…]+', ' ', text)
         # 改行を除去
