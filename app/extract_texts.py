@@ -14,6 +14,8 @@ def extract_texts(tweets):
     for tweet in tweets:
         text = tweet['text']
         hashtags = ['#' + ht['text'] for ht in tweet['entities']['hashtags']]
+        # 自身を包含する別のハッシュタグの一部を除去しないようにソート
+        hashtags.sort(key=len, reverse=True)
 
         # ハッシュタグを除去
         if hashtags:
