@@ -1,8 +1,15 @@
 import boto3
 from janome.tokenizer import Tokenizer
+import re
 
 
 def split_texts_into_words(texts, bucket):
+    # 除去する繰り返し表現をDynamoDBから取得
+    table = boto3.resource('dynamodb').Table('ll-now-remove-repeat')
+    res = table.scan()
+    remove_repeat = [c['character'] for c in res['Items']]
+    remove_repeat_pattern = '|'.join(['^({})+$'.format(rr) for rr in remove_repeat])
+
     # ユーザ辞書をs3からダウンロード
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(bucket)
@@ -19,6 +26,7 @@ def split_texts_into_words(texts, bucket):
         for token in tokens:
             pos = token.part_of_speech.split(',')[0]
             if pos in ['名詞']:
-                words.append(token.base_form)
+                if not re.match(remove_repeat_pattern, token.base_form):
+                    words.append(token.base_form)
 
     return words
