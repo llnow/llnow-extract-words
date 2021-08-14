@@ -30,6 +30,9 @@ def extract_texts(tweets):
         # 不要な単語を除去
         text = re.sub(remove_words_pattern, '', text)
 
+        # ツイートを跨いでコロケーション判定されないように末尾にターミネータを付加
+        text += ' eotw'
+
         texts.append(text)
 
     return texts
