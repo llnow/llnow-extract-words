@@ -8,7 +8,7 @@ def split_texts_into_words(texts, bucket):
     table = boto3.resource('dynamodb').Table('ll-now-remove-repeat')
     res = table.scan()
     remove_repeat = [c['character'] for c in res['Items']]
-    remove_repeat_pattern = '|'.join(['^({})+$'.format(rr) for rr in remove_repeat])
+    remove_repeat_pattern = '|'.join(['^(' + rr + '){2,}$' for rr in remove_repeat])  # 2回以上の繰り返しパターン
 
     # ユーザ辞書をs3からダウンロード
     s3 = boto3.resource('s3')
