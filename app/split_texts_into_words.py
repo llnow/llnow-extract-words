@@ -20,13 +20,34 @@ def split_texts_into_words(texts, bucket):
     # ユーザ辞書を使う
     t = Tokenizer(file_path, udic_enc='utf-8')
 
+    # 記号を含む単語リスト
+    terms_contain_symbol = ["A・ZU・NA", "μ’s"]
+
     words = []
     for text in texts:
+        words_tmp = []
         tokens = t.tokenize(text)
         for token in tokens:
             pos = token.part_of_speech.split(',')[0]
-            if pos in ['名詞']:
-                if not re.match(remove_repeat_pattern, token.base_form):
-                    words.append(token.base_form)
+            if pos in ['名詞', '記号']:
+                if not re.match(remove_repeat_pattern, token.surface):
+                    words_tmp.append(token.surface)
+
+        # 記号を含む単語の処理
+        terms = []
+        for term in terms_contain_symbol:
+            if term in text:
+                terms.append(term)
+        if terms:
+            for term in terms:
+                words_of_term = [token.surface for token in t.tokenize(term)]
+                for i in range(len(words_tmp) - (len(words_of_term) - 1)):
+                    if i >= len(words_tmp):
+                        break
+                    if words_tmp[i:i + len(words_of_term)] == words_of_term:
+                        del words_tmp[i:i + len(words_of_term)]
+                        words_tmp.insert(i, term)
+
+        words += words_tmp
 
     return words
