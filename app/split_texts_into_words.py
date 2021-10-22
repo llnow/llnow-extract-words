@@ -29,9 +29,10 @@ def split_texts_into_words(texts, bucket):
         tokens = t.tokenize(text)
         for token in tokens:
             pos = token.part_of_speech.split(',')[0]
-            if pos in ['名詞', '記号']:
-                if not re.match(remove_repeat_pattern, token.surface):
-                    words_tmp.append(token.surface)
+            surface = token.surface
+            if pos in ['名詞'] or re.match("[Α-ω・’]", surface):
+                if not re.match(remove_repeat_pattern, surface):
+                    words_tmp.append(surface)
 
         # 記号を含む単語の処理
         terms = []
