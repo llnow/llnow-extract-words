@@ -1,5 +1,6 @@
 import re
 import boto3
+import unicodedata
 
 
 def extract_texts(tweets):
@@ -25,6 +26,8 @@ def extract_texts(tweets):
         text = re.sub(r'https?://[\w/:%#\$&\?\(\)~\.=\+\-…]+', ' ', text)
         # 改行を除去
         # text=re.sub('\n', ' ', text)
+        # Unicode正規化
+        text = unicodedata.normalize('NFKC', text)
         # 半角のシングルクォーテーションを全角に変換
         text = re.sub(r"'", "’", text)
         # 絵文字などを除去
