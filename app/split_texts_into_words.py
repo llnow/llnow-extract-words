@@ -21,7 +21,7 @@ def split_texts_into_words(texts, bucket):
     t = Tokenizer(file_path, udic_enc='utf-8')
 
     # 記号を含む単語リスト
-    terms_contain_symbol = ["A・ZU・NA", "μ’s"]
+    terms_contain_symbol = ["A・ZU・NA", "μ’s", "1.2.3"]
 
     words = []
     for text in texts:
@@ -30,7 +30,7 @@ def split_texts_into_words(texts, bucket):
         for token in tokens:
             pos = token.part_of_speech.split(',')[0]
             surface = token.surface
-            if pos in ['名詞'] or re.match("[Α-ω・’]", surface):
+            if pos in ['名詞'] or re.match("[Α-ω・’.]", surface):
                 if not re.match(remove_repeat_pattern, surface):
                     words_tmp.append(surface)
 
