@@ -17,7 +17,7 @@ def extract_tweets_features(tweets, mode):
         "oldest_tweet_created_at": oldest_tweet_created_at
     })
 
-    # tweets_featureをSystem Managerパラメータストアに記録
+    # tweets_featuresをSystem Managerパラメータストアに記録
     key = 'll-now-tweets-features-{}'.format(mode)
     update_ssm_param(key, tweets_features)
 
