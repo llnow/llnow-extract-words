@@ -14,11 +14,7 @@ def extract_tweets_features(tweets, search_metadata, bucket):
         'search_metadata': search_metadata
     }
 
-    path = '/tmp/tweets_features.json'
-    with open(path, 'w') as f:
-        json.dump(tweets_features, f, indent=4, ensure_ascii=False)
     s3 = boto3.resource('s3')
-    bucket = s3.Bucket(bucket)
     key = 'tmp/tweets_features.json'
-    res = bucket.upload_file(path, key)
+    res = s3.Object(bucket, key).put(Body=json.dumps(tweets_features, indent=4, ensure_ascii=False))
     print(res)
