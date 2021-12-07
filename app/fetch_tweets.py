@@ -8,6 +8,7 @@ def fetch_tweets(bucket, key):
     obj = bucket.Object(key)
     response = obj.get()
     body = response['Body'].read()
-    tweets = json.loads(body.decode('utf-8'))
+    res = json.loads(body.decode('utf-8'))
+    tweets, search_metadata = res['statuses'], res['search_metadata']
 
-    return tweets
+    return tweets, search_metadata
