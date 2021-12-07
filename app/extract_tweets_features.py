@@ -14,7 +14,11 @@ def extract_tweets_features(tweets, search_metadata, bucket):
         'search_metadata': search_metadata
     })
 
-    s3 = boto3.resource('s3')
+    s3 = boto3.client('s3')
     key = 'tmp/tweets_features.json'
-    res = s3.Object(bucket, key).put(Body=json.dumps(tweets_features, indent=4))
+    res = s3.put_object(
+        Body=json.dumps(tweets_features, indent=4, ensure_ascii=False),
+        Bucket=bucket,
+        Key=key
+    )
     print(res)
