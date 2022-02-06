@@ -1,0 +1,2 @@
+mecab-python3
+pytz==2021.1
