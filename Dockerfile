@@ -42,6 +42,6 @@ COPY ./lovelive_word_dic.csv /userdic.csv
 # compile userdic
 RUN /usr/local/libexec/mecab/mecab-dict-index -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd -u /userdic.dic -f utf-8 -t utf-8 /userdic.csv
 
-COPY ./app/* ${LAMBDA_TASK_ROOT}
+COPY ./app/* ${LAMBDA_TASK_ROOT}/
 
 CMD [ "main.main" ]
