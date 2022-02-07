@@ -35,7 +35,7 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-#          aws lambda update-function-code --function-name $AWS_LAMBDA_FUNCTION_NAME --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          aws lambda update-function-code --function-name $AWS_LAMBDA_FUNCTION_NAME --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:latest
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY_NAME }}
