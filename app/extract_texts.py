@@ -31,7 +31,7 @@ def extract_texts(tweets):
         # 半角のシングルクォーテーションを全角に変換
         text = re.sub(r"'", "’", text)
         # 絵文字などを除去
-        text = re.sub(r'[^,.、。!?ー〜0-9a-zA-Zぁ-んァ-ヶ亜-腕纊-黑一-鿕・Α-ω’]', ' ', text)
+        text = re.sub(r"[^,.、。ー〜0-9a-zA-Zぁ-んァ-ヶ亜-腕纊-黑一-鿕・Α-ω’]", " ", text)
         # 不要な単語を除去
         text = re.sub(remove_words_pattern, '', text)
 
