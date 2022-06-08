@@ -10,10 +10,10 @@ Twitter BOT [LL Now](https://twitter.com/LLNow_jp) の単語抽出部分
 ```#lovelive```を含む日本語ツイートを収集・可視化するTwitter BOT
 
 プロジェクトは次の4つのリポジトリに分かれている
-* [ll-now-fetch-tweet](https://github.com/sy-app/ll-now-fetch-tweet)
-* [ll-now-extract-words](https://github.com/sy-app/ll-now-extract-words)
-* [ll-now-generate-image](https://github.com/sy-app/ll-now-generate-image)
-* [ll-now-post-tweet](https://github.com/sy-app/ll-now-post-tweet)
+* [ll-now-fetch-tweet](https://github.com/yasurona/ll-now-fetch-tweet)
+* [ll-now-extract-words](https://github.com/yasurona/ll-now-extract-words)
+* [ll-now-generate-image](https://github.com/yasurona/ll-now-generate-image)
+* [ll-now-post-tweet](https://github.com/yasurona/ll-now-post-tweet)
 
 ## License
 [MIT](https://github.com/sy-app/ll-now-extract-words/blob/master/LICENSE)
