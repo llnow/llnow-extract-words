@@ -22,4 +22,4 @@ Twitter BOT [LL Now](https://twitter.com/LLNow_jp) の単語抽出部分
 
 ## License
 
-[MIT](https://github.com/sy-app/ll-now-extract-words/blob/master/LICENSE)
+[MIT](https://github.com/yasurona/ll-now-extract-words/blob/master/LICENSE)
