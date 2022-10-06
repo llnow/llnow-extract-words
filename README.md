@@ -10,7 +10,7 @@ Twitter BOT [LL Now](https://twitter.com/LLNow_jp) の単語抽出部分
 
 ![system_overview](https://github.com/llnow/llnow-fetch-tweets/blob/master/docs/img/system_overview.png "System overview of LL Now")
 
-プロジェクトは次の4つのリポジトリに分かれている
+### Repositories
 - [llnow-fetch-tweets](https://github.com/llnow/llnow-fetch-tweets)
 - [llnow-extract-words](https://github.com/llnow/llnow-extract-words)
 - [llnow-generate-image](https://github.com/llnow/llnow-generate-image)
