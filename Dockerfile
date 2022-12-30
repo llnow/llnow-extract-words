@@ -32,7 +32,7 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
     && ./bin/install-mecab-ipadic-neologd -n -a -y \
     && rm -rf mecab-ipadic-neologd
 
-# setup python
+# install python dependencies
 COPY ./requirements.txt /opt/
 RUN pip install --upgrade pip && pip install -r /opt/requirements.txt
 
